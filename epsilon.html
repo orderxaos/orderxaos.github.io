@@ -3,18 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ORDERXAOS — Epsilon</title>
-    <script type="module" crossorigin src="./assets/index-DiKfdMZV.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-CTEccXgi.css">
+    <title>Hello world project</title>
+    <script type="module" crossorigin src="./assets/index-ITPuABp0.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-D18FExI8.css">
   </head>
 
   <body>
     <div id="root"></div>
     <script>
-      // expose base for SPA routing without modifying the current URL
       (function(){
         var base = location.pathname.replace(/[^\/]+$/, '/');
         window.__BASENAME__ = base;
+        var target = base + 'epsilon-case_study';
+        function boot(){
+          if (location.pathname !== target) {
+            history.replaceState(null, '', target);
+            window.dispatchEvent(new PopStateEvent('popstate'));
+          }
+        }
+        if (document.readyState === 'complete' || document.readyState === 'interactive') {
+          setTimeout(boot, 0);
+        } else {
+          document.addEventListener('DOMContentLoaded', function(){ setTimeout(boot, 0); });
+        }
       })();
     </script>
   </body>
