@@ -3,23 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ORDERXAOS</title>
-
-    <!-- Google Analytics: -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V91M07GD3B"></script>
+    <title>ORDERXAOS — Portfolio</title>
+    <!-- Google Analytics -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-V91M07GD3B');
+      (function() {
+        var GA_ID = 'G-V91M07GD3B';
+        if (!GA_ID || GA_ID === 'G-V91M07GD3B') {
+          console.warn('GA Measurement ID not set — skipping analytics');
+          return;
+        }
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);} 
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', GA_ID);
+      })();
     </script>
 
-    <script type="module" crossorigin src="./assets/index-Ds0prgfM.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-BSFplnsN.css">
+    <script type="module" crossorigin src="./assets/index-D63wHYmX.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DZCBoqsO.css">
   </head>
 
   <body>
     <div id="root"></div>
 
+    <script>
+      // SPA fallback: ensure direct route access loads the SPA
+      (function() {
+        var path = window.location.pathname;
+        if (path !== '/' && !['/acquire-case_study', '/epsilon-case_study'].includes(path)) {
+          window.history.replaceState({}, '', '/index.html' + window.location.search + window.location.hash);
+        }
+      })();
+    </script>
   </body>
 </html>
