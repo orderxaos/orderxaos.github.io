@@ -13,20 +13,27 @@
         console.warn('GA Measurement ID not set — skipping analytics');
         return;
       }
+      var host = window.location && window.location.hostname;
+      var isLocalHost = host === 'localhost' || host === '127.0.0.1' || host === '0.0.0.0';
+      var isFileProtocol = window.location && window.location.protocol === 'file:';
+      if (isLocalHost || isFileProtocol || window.__DISABLE_GA__ === true) {
+        console.info('Google Analytics disabled on this host:', host || '(unknown)');
+        return;
+      }
       var s = document.createElement('script');
       s.async = true;
       s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
       document.head.appendChild(s);
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);} 
+      function gtag(){dataLayer.push(arguments);}
       window.gtag = gtag;
       gtag('js', new Date());
       gtag('config', GA_ID);
     })();
   </script>
   <script type="module" crossorigin src="./assets/tradeExchange-case_study.js"></script>
-  <link rel="modulepreload" crossorigin href="./assets/globalEdit_case-study.Cv0P4-CY.js">
-  <link rel="stylesheet" crossorigin href="./assets/globalEdit_case-study.CJ4jIoMT.css">
+  <link rel="modulepreload" crossorigin href="./assets/globalEdit_case-study.Cy4SDAo6.js">
+  <link rel="stylesheet" crossorigin href="./assets/globalEdit_case-study.CbMi5Hn7.css">
 </head>
 <body>
   <div id="root"></div>
